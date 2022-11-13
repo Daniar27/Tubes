@@ -1,3 +1,2 @@
-1 Mie 50
-2 Beras 40
-3 Air 60
+0 Beras 60
+1 Air 54
