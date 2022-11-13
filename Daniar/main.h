@@ -15,9 +15,15 @@ typedef struct Recipient{
 
 struct Stock A[100];
 
+//auth
 int auth();
+
+//stock management
 int MainMenu();
-void ReadStock();
+int ReadStock(int b);
+int AddStock(int c, int j);
+int EditStock(int c, int j);
+int DeleteStock(int c, int j);
 
 
 #endif
