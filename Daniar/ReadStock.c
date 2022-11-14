@@ -28,7 +28,7 @@ int ReadStock(int b){
 	printf("\n\tPilihan Anda (1-3)\n\t(0) untuk kembali ke menu utama : ");
 	scanf("%d", &pilih);	
 	if(pilih==0){
-		return b;
+		return pilih;
 	}
 	else if(pilih==1){
 		AddStock(c,j);
@@ -128,4 +128,3 @@ DeleteStock(int c, int j){
 		fclose(a);
 	}
 }
-
