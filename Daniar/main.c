@@ -19,7 +19,10 @@ int main(int argc, char *argv[]) {
 				goto menu;
 			}
 		}else if(a==2){
-			printf("Recipient Menu");
+			b=RecipientMenu();
+			if(b==0){
+				goto menu;
+			}
 		}
 	}
 	return 0;
