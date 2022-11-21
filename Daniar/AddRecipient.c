@@ -134,5 +134,6 @@ void AddRecipient(){
 			}
 		}while(l<=i-1);
 	fclose(d);
+	printf("\n\tData Berhasil Ditambahkan\n\t");
 	system("pause");
 }
