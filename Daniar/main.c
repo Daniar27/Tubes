@@ -26,6 +26,7 @@ int main(int argc, char *argv[]) {
 		}
 		else if(a==3){
 			about();
+			system("color 07");
 			goto menu;
 		}
 	}
