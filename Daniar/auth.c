@@ -31,9 +31,9 @@ int auth(){
 	if(checkUsn !=0||checkPsw !=0){
 		
 		printf("\n\tusername/password yang anda masukkan salah!\n");
-		printf("\tPress 1 to Exit\n\tPress number except 1 to continue :");
+		printf("\tPress 1 to Continue\n\tPress number except 1 to exit :");
 		scanf("%i", &opsi);
-		if(opsi == 1){
+		if(opsi != 1){
 			system("cls");
 			return CheckAuth;	
 		}

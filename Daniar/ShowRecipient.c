@@ -15,7 +15,11 @@ int ShowRecipient(){
 	printf("\n");
 	printf("\tId\tNama Recipient\tTanggal Permintaan\n");
 	a=fopen("recipient.txt", "r+");
-	do{
+	if(!a){
+		printf("\tData Masih Kosong\n");
+	}
+	else{
+		do{
 		fscanf(a, "%d %s %d %d %d",&B[j].id_re, B[j].nama_re, &B[j].ct.day, &B[j].ct.month, &B[j].ct.year);
 		for(i=0;i<2;i++){
 			fscanf(a," %d %s %d\n", &B[j].item[i].id, B[j].item[i].nama, &B[j].item[i].jum);
@@ -24,14 +28,18 @@ int ShowRecipient(){
 		printf("\t%d\t%s\t\t%d-%d-%d\n",B[j].id_re,B[j].nama_re,B[j].ct.day,B[j].ct.month,B[j].ct.year);
 		j++;
 	}while(!feof(a));
+	}
+	
 	fclose(a);
-	printf("\n\t 1. Info\n\t 2. Delete\n\t 0. Back");
+	printf("\n\t 1. Info\n\t 2. Destroy Report\n\t 0. Back");
 	printf("\n\t Pilih : ");
 	scanf("%d", &opsi);
 	if(opsi==1){
 		printf("\tMasukkan id data yang ingin dilihat : ");
 		scanf("%d", &pilih);
 		InfoRecipient(pilih);
+	}else if(opsi==2){
+		DestroyReport();
 	}
 	return 0;
 }
@@ -55,10 +63,9 @@ int InfoRecipient(int a){
 			for(i=0; i<2; i++){
 				printf("\t%d\t%s\t\t%d\n", B[j].item[i].id, B[j].item[i].nama, B[j].item[i].jum);
 			}
-			printf("\n\t1.Edit Data Recipient\n\t2.Edit Data Item\n\t0.Back");
+			printf("\n\t0.Back");
 			printf("\n\tOpsi : ");
 			scanf("%d",&opsi);
-			EditManagement(a,opsi);
 			return 0;
 		}
 	}

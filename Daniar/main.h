@@ -40,14 +40,11 @@ int DeleteStock(int c, int j);
 
 //Recipient Management
 int RecipientMenu();
-void AddRecipient();
+void AddRecipient(int x);
 int ShowRecipient();
 int InfoRecipient(int a);
-struct Recipient EditRecipient(int a);
-struct Recipient EditItemsRe(int a);
-int EditManagement(int a, int opsi);
 int DeleteRecipient();
-int DestroyReport();
+void DestroyReport();
 
 
 #endif
