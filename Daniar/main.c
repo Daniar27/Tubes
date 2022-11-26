@@ -8,6 +8,9 @@
 
 int main(int argc, char *argv[]) {
 	int b,a;
+	auth:
+	system("cls");
+	fflush(stdin);
 	auth();
 	if(CheckAuth==1){
 		printf("Login sukses");
@@ -28,6 +31,13 @@ int main(int argc, char *argv[]) {
 			about();
 			system("color 07");
 			goto menu;
+		}
+		else if(a==4)
+		{
+			exit(1);
+		}
+		else {
+			goto auth;
 		}
 	}
 	return 0;
