@@ -13,23 +13,23 @@ void DestroyReport(){
 	printf("\tApakah anda yakin untuk menghapus laporan data recipient(data tidak bisa dipulihkan)(y/n) : ");fflush(stdin);
 	scanf("%c",&validasi);
 	if(validasi=='y'||validasi=='Y'){
-		v=0;
-		count=3;
+		v=1;
+		count=2;
 		file = fopen("auth.txt", "r");
 		fscanf(file,"  %s",password);
 		fclose(file);
 		pass :
-		printf("\t\t Masukkan Password : ");
+		printf("\t\tMasukkan Password : ");
 		scanf("%s",pass);
 		CheckPsw=strcmp(pass,password);
 		if(CheckPsw!=0){
 			if(v<3){
-				printf("\t Password anda salah, tersisa %d kali kesempatan\n\t",count);
+				printf("\t\tPassword anda salah, tersisa %d kali kesempatan\n\t",count);
 				count--;
 				v++;
 				goto pass;
 			}else{
-				printf("\t Anda telah salah 3 kali dalam input password !!\n\t");
+				printf("\t\tAnda telah salah 3 kali dalam input password !!\n\t");
 				system("pause");
 			}
 		}else{
