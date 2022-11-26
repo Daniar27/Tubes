@@ -15,11 +15,11 @@ int ReadStock(int b){
 	printf("\tAplikasi Manajemen Inventory\n");
 	printf("=========================================\n");
 	printf("\n");
-	printf("\tId\tNama Barang\tJumlah\n");
+	printf("\tId\tNama Barang\t\tJumlah\n");
 	a=fopen("stock.txt", "r");
 	do{
 		fscanf(a, "%d %s %d",&A[j].id, A[j].nama, &A[j].jum," \n");
-		printf("\t%d\t%s\t\t%d\n",A[j].id, A[j].nama, A[j].jum);
+		printf("\t%d\t%s\t\t\t%d\n",A[j].id, A[j].nama, A[j].jum);
 		j++;
 	}while(!feof(a));
 	fclose(a);
@@ -68,7 +68,9 @@ int AddStock(int c,int j){
 //Edit Stock
 int EditStock(int c, int j){
 	FILE *a;
-	int id,i;
+	char nama[20];
+	char validasi[20]="-";
+	int id,i,l;
 	int k=0;
 	printf("\n\tMasukkan id barang yang ingin di edit : ");
 	scanf("%d", &id);
@@ -76,8 +78,12 @@ int EditStock(int c, int j){
 		if(id==A[i].id){
 			system("cls");
 			printf("\t%d\t%s\t\t%d\n",A[i].id, A[i].nama, A[i].jum);
-			printf("\t\n Masukkan Nama Barang yang baru : ");
-			scanf("%s", &A[i].nama);
+			printf("\t\n Masukkan Nama Barang yang baru (gunakan - jika tidak ingin mengubah nama barang) : ");
+			scanf("%s", &nama);
+			if(strcmp(A[i].nama,nama)==0||strcmp(nama, validasi)==0){
+			}else{
+				snprintf(A[i].nama, sizeof(A[i].nama), "%s", nama);
+			}
 			printf("\t\n Masukkan Jumlah Barang yang baru : ");
 			scanf("%d", &A[i].jum);
 			a=fopen("stock.txt","w");
@@ -100,31 +106,43 @@ int EditStock(int c, int j){
 //Delete Stock
 DeleteStock(int c, int j){
 	FILE *a;
+	char validasi;
 	int id,i;
 	int k=0;
 	int l=0;
 	printf("\n\tMasukkan id barang yang ingin dihapus : ");
 	scanf("%d",&id);
+	fflush(stdin);
 	if(id < 0 || id > j){
-        printf("Invalid position! Please enter position between 1 to %d", j);
+        printf("\n\tInvalid id! Please enter id between 1 to %d\n", j);
+        system("pause");
     }
     else{
-    	for(i=id; i<j; i++)
-        {
-            for(l=0;l<20;l++){
-            	A[i].nama[l]=A[i+1].nama[l];
-			}
+    	printf("\tApa anda yakin ingin menghapus data %s ?(y/n) : ", A[id].nama);
+    	scanf("%c",&validasi);
+    	if(validasi=='y'||validasi=='Y'){
+    		for(i=id; i<j; i++)
+        	{
+	            for(l=0;l<20;l++){
+	            	A[i].nama[l]=A[i+1].nama[l];
+				}
             A[i].jum = A[i+1].jum;
-        }
-        j--;
-        a=fopen("stock.txt","w");
-		do{
-			fprintf(a,"%d %s %d", A[k].id, A[k].nama, A[k].jum);
-			k++;
-			if(k<=j-1){
-				fprintf(a,"\n");
-			}
-		}while(k<=j-1);
-		fclose(a);
+        	}
+	        j--;
+	        a=fopen("stock.txt","w");
+			do{
+				fprintf(a,"%d %s %d", A[k].id, A[k].nama, A[k].jum);
+				k++;
+				if(k<=j-1){
+					fprintf(a,"\n");
+				}
+			}while(k<=j-1);
+			fclose(a);
+			return 0;
+		}
+		else if(validasi=='n'||validasi=='N'){
+			return 0;
+		}
+    	
 	}
 }

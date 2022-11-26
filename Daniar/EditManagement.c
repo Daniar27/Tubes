@@ -4,22 +4,44 @@
 #include <time.h>
 #include "main.h"
 
-int EditManagement(int a, int opsi){
-	if(opsi==1){
-		EditRecipient(a);
+void DestroyReport(){
+	char validasi;
+	char pass[20], password[20];
+	int CheckPsw, v, count, r;
+	FILE *file;
+	FILE *file1;
+	printf("\tApakah anda yakin untuk menghapus laporan data recipient(data tidak bisa dipulihkan)(y/n) : ");fflush(stdin);
+	scanf("%c",&validasi);
+	if(validasi=='y'||validasi=='Y'){
+		v=0;
+		count=3;
+		file = fopen("auth.txt", "r");
+		fscanf(file,"  %s",password);
+		fclose(file);
+		pass :
+		printf("\t\t Masukkan Password : ");
+		scanf("%s",pass);
+		CheckPsw=strcmp(pass,password);
+		if(CheckPsw!=0){
+			if(v<3){
+				printf("\t Password anda salah, tersisa %d kali kesempatan\n\t",count);
+				count--;
+				v++;
+				goto pass;
+			}else{
+				printf("\t Anda telah salah 3 kali dalam input password !!\n\t");
+				system("pause");
+			}
+		}else{
+			r=remove("recipient.txt");
+			if(r==0){
+				printf("\n\treport berhasil dikosongkan\n\t");
+				system("pause");
+			}else{
+				printf("\n\tDelete gagal\n\t");
+				system("pause");
+			}
+			
+		}
 	}
-}
-
-struct Recipient EditRecipient(int a){
-	int i;
-	system("cls");
-	printf("\t%d \t%s \t\t%d-%d-%d\n",B[a].id_re,B[a].nama_re,B[a].ct.day,B[a].ct.month,B[a].ct.year);
-	printf("\t=================================");
-	printf("\n\tDaftar Barang Yang Diberikan\n");
-	printf("\t=================================\n\n");
-	printf("\tItem_id\tNama Barang\tJumlah\n");
-	for(i=0; i<2; i++){
-		printf("\t%d\t%s\t\t%d\n", B[a].item[i].id, B[a].item[i].nama, B[a].item[i].jum);
-	}
-	system("pause");
 }

@@ -1,3 +1,2 @@
-0 Beras 40
-1 Selimut 37
-2 Ican 80
+0 Beras 25
+1 Selimut 14
