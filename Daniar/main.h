@@ -30,7 +30,7 @@ int auth();
 
 //menu
 int MainMenu();
-int Help();
+void about();
 
 //stock management
 int ReadStock(int b);

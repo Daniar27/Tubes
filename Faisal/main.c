@@ -6,5 +6,6 @@
 
 int main(int argc, char *argv[]) {
 	printf("ini main gaakan kepake");
+	about();
 	return 0;
 }

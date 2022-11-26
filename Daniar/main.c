@@ -3,7 +3,7 @@
 #include <windows.h>
 #include "main.h"
 #include "..\Faisal\MainMenu.c"
-
+#include "..\Faisal\about.c"
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 
 int main(int argc, char *argv[]) {
@@ -23,6 +23,10 @@ int main(int argc, char *argv[]) {
 			if(b==0){
 				goto menu;
 			}
+		}
+		else if(a==3){
+			about();
+			goto menu;
 		}
 	}
 	return 0;
