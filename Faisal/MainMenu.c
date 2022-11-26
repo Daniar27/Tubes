@@ -12,6 +12,7 @@ int MainMenu(){
 	printf("\t1.Stock Management");
 	printf("\n\t2.Recipient Management");
 	printf("\n\t3.About");
+	printf("\n\t4.Exit");
 	printf("\n\tPilih : ");
 	scanf("%i",&Opsi);
 	return Opsi;
