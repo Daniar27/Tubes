@@ -6,7 +6,7 @@
 
 void DestroyReport(){
 	char validasi;
-	char pass[20], password[20];
+	char password[20];
 	int CheckPsw, v, count, r;
 	FILE *file;
 	FILE *file1;
@@ -15,12 +15,9 @@ void DestroyReport(){
 	if(validasi=='y'||validasi=='Y'){
 		v=1;
 		count=2;
-		file = fopen("auth.txt", "r");
-		fscanf(file,"  %s",password);
-		fclose(file);
 		pass :
 		printf("\t\tMasukkan Password : ");
-		scanf("%s",pass);
+		scanf("%s",password);
 		CheckPsw=strcmp(pass,password);
 		if(CheckPsw!=0){
 			if(v<3){

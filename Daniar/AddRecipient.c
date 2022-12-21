@@ -41,14 +41,7 @@ void AddRecipient(int x){
 		fclose(c);
 		
 		//Get Time Now
-		time_t now;
-	    time(&now);
-	
-	 	struct tm *local = localtime(&now);
-	 	B[j].ct.day= local->tm_mday;            // get day of month (1 to 31)
-	    B[j].ct.month = local->tm_mon + 1;      // get month of year (0 to 11)
-	    B[j].ct.year = local->tm_year + 1900;   // get year since 1900
-	 	
+	 	getTime(&B[j].ct.day,&B[j].ct.month,&B[j].ct.year);
 	 	
 		//input user
 		B[j].id_re=j;
@@ -146,15 +139,8 @@ void AddRecipient(int x){
 		}while(!feof(c));
 		fclose(c);
 		
-		//Get Time Now
-		time_t now;
-	    time(&now);
+	    getTime(&B[j].ct.day,&B[j].ct.month,&B[j].ct.year);
 	
-	 	struct tm *local = localtime(&now);
-	 	B[j].ct.day= local->tm_mday;            // get day of month (1 to 31)
-	    B[j].ct.month = local->tm_mon + 1;      // get month of year (0 to 11)
-	    B[j].ct.year = local->tm_year + 1900;   // get year since 1900
-	 	
 	 	
 		//input user
 		B[j].id_re=j;

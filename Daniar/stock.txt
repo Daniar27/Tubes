@@ -1,1 +1,3 @@
-0 Selimut 9
+0 Beras 98
+1 Selimut 10
+2 Air 60

@@ -24,7 +24,7 @@ int ReadStock(int b){
 	}while(!feof(a));
 	fclose(a);
 	printf("\n\n");
-	printf("\tPilih\n\t1.Add Stock\n\t2.Edit Stock\n\t3.Delete Stock\n");
+	printf("\tPilih\n\t1.Add Stock\n\t2.Edit Stock\n\t3.Delete Stock\n\t4.History Edit");
 	printf("\n\tPilihan Anda (1-3)\n\t(0) untuk kembali ke menu utama : ");
 	scanf("%d", &pilih);	
 	if(pilih==0){
@@ -47,6 +47,9 @@ int ReadStock(int b){
 		if(c==0){
 			return b;
 		}
+	}
+	else if(pilih==4){
+		getHistoryStock();
 	}
 }
 
@@ -76,6 +79,16 @@ int EditStock(int c, int j){
 	scanf("%d", &id);
 	for(i=0;i<=id;i++){
 		if(id==A[i].id){
+			int z=0;
+			
+			a=fopen("history.txt", "a");
+				riwayat[z].id=z+1;
+				riwayat[z].id_stock=id;
+				riwayat[z].stok.jum=A[i].jum;
+				strcpy(riwayat[z].stok.nama,A[i].nama);
+				getTime(&riwayat[z].waktu.day, &riwayat[z].waktu.day, &riwayat[z].waktu.month);
+				fprintf(a, "\n%d %d %d %d %d %s %d",riwayat[z].id, riwayat[z].waktu.day, riwayat[z].waktu.day, riwayat[z].waktu.month, riwayat[z].id_stock, riwayat[z].stok.nama, riwayat[z].stok.jum);
+			fclose(a);
 			system("cls");
 			printf("\t%d\t%s\t\t%d\n",A[i].id, A[i].nama, A[i].jum);
 			printf("\t\n Masukkan Nama Barang yang baru (gunakan - jika tidak ingin mengubah nama barang) : ");
@@ -94,7 +107,7 @@ int EditStock(int c, int j){
 					fprintf(a,"\n");
 				}
 			}while(k<=j-1);
-			fclose(a);
+				fclose(a);
 		}
 		else{
 			continue;
@@ -107,7 +120,7 @@ int EditStock(int c, int j){
 DeleteStock(int c, int j){
 	FILE *a;
 	FILE *file;
-	char validasi, password[20], pass[20];
+	char validasi, password[20];
 	int id,i,v,count,CheckPsw;
 	int k=0;
 	int l=0;
@@ -115,7 +128,7 @@ DeleteStock(int c, int j){
 	scanf("%d",&id);
 	fflush(stdin);
 	if(id < 0 || id > j){
-        printf("\n\tInvalid id! Please enter id between 1 to %d\n", j);
+        printf("\n\tInvalid id! Please enter id between 0 to %d\n", j);
         system("pause");
     }
     else{
@@ -124,12 +137,9 @@ DeleteStock(int c, int j){
     	if(validasi=='y'||validasi=='Y'){
     	v=1;
 		count=2;
-		file = fopen("auth.txt", "r");
-		fscanf(file,"  %s",password);
-		fclose(file);
 		pass :
 		printf("\n\t\tMasukkan Password : ");
-		scanf("%s",pass);
+		scanf("%s",password);
 		CheckPsw=strcmp(pass,password);
 		if(CheckPsw!=0){
 			if(v<3){

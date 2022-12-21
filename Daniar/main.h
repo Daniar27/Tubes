@@ -22,11 +22,29 @@ typedef struct Recipient{
 	struct Stock item[2];
 }Re[100];
 
+typedef struct History{
+	int id;
+	struct Time waktu;
+	struct Stock stok;
+	int id_stock;
+}a;
+
+typedef struct auth{
+	char username[20];
+	char password[20];	
+}c;
+
+
+
+struct History riwayat[100];
 struct Stock A[100];
 struct Recipient B[100];
+struct auth Admin[100];
 
 //auth
 int auth();
+void register_admin();
+char pass[20], user[20];
 
 //menu
 int MainMenu();
@@ -37,6 +55,7 @@ int ReadStock(int b);
 int AddStock(int c, int j);
 int EditStock(int c, int j);
 int DeleteStock(int c, int j);
+void getHistoryStock();
 
 //Recipient Management
 int RecipientMenu();
@@ -45,6 +64,9 @@ int ShowRecipient();
 int InfoRecipient(int a);
 int DeleteRecipient();
 void DestroyReport();
+
+//time
+void getTime(int *day,int *month, int *year);
 
 
 #endif
